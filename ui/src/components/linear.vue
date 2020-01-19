@@ -1,24 +1,23 @@
 <template>
   <div class="home">
-    <h1 id="view">
-      Select a view
-    </h1>
     <p class="models">
-      <span id="blocks">[</span>
-      <router-link to="/linear">Linear</router-link>
-      <router-link to="/logistic">Logistic</router-link>
-      <router-link to="/logistic">Random Forest</router-link>
-      <span id="blocks">]</span>
+        <b-dropdown variant="light" split :text="selectedSymptom" v-model="selectedSymptom">
+          <b-dropdown-item v-for="(s, index) in symptoms" :key="index" @click="selectedSymptom=s">{{ s }}</b-dropdown-item>
+        </b-dropdown>
     </p>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Home',
+  name: 'Linear',
   data () {
     return {
-
+      selectedSymptom: "Symptoms",
+      symptoms: [
+        "Anxiety",
+        "Nausea"
+      ]
     }
   }
 }
@@ -67,6 +66,12 @@ a.block:hover, a:visited.block:hover {
 
 #blocks {
   font-size: 24px;
+}
+
+::v-deep b-dropdown {
+  background-color: #0C1178;
+  color:orange;
+  width: 200px;
 }
 
 .home {
